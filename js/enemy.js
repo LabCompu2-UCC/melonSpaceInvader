@@ -3,7 +3,7 @@
  */
 game.Enemy = me.Entity.extend({
     init: function (x, y) {
-        this._super(me.Entity, "init", [10, 10, {
+        this._super(me.Entity, "init", [x, y, {
             image : "ships",
             width : 32,
             height : 32
