@@ -17,6 +17,7 @@ game.EnemyManager = me.Container.extend({
         this.addChild(me.pool.pull("enemy", i * 64, j * 64));
       }
     }
+    this.createdEnemies = true;
     this.updateChildBounds();
   },
   onActivateEvent : function () {
@@ -34,6 +35,7 @@ game.EnemyManager = me.Container.extend({
         else {
           _this.vel -= 5;
         }
+        game.playScreen.checkIfLoss(bounds.bottom);
       }
       else {
         _this.pos.x += _this.vel;
@@ -53,6 +55,9 @@ game.EnemyManager = me.Container.extend({
 
 
   update : function (time) {
+    if (this.children.length === 0 && this.createdEnemies) {
+      game.playScreen.reset();
+    }
     this._super(me.Container, "update", [time]);
     this.updateChildBounds();
   }

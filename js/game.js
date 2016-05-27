@@ -34,7 +34,8 @@ var game = {
         me.state.set(me.state.PLAY, this.playScreen);
         me.pool.register("player", game.Player);
         me.pool.register("enemy", game.Enemy);
-        
+        me.pool.register("laser", game.Laser);
+
         // start the game
         me.state.change(me.state.PLAY);
     }
